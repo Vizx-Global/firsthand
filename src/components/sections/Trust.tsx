@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Quote, Award, Users, TrendingUp, Shield } from "lucide-react";
+import { Quote, Award, Users, TrendingUp, Shield } from "lucide-react";
 import { useRef } from "react";
 
 export function Trust() {
@@ -29,13 +29,6 @@ export function Trust() {
     }
   ];
 
-  const stats = [
-    { value: "98%", label: "Client Retention Rate", icon: TrendingUp, color: "text-primary" },
-    { value: "150+", label: "Active Partnerships", icon: Users, color: "text-blue-500" },
-    { value: "24h", label: "Average Time-to-Fill", icon: Award, color: "text-green-500" },
-    { value: "100%", label: "Compliance Accuracy", icon: Shield, color: "text-purple-500" },
-  ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -43,18 +36,6 @@ export function Trust() {
       transition: {
         staggerChildren: 0.1,
         delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
       }
     }
   };
@@ -67,7 +48,7 @@ export function Trust() {
       transition: {
         duration: 0.5,
         delay: custom * 0.15,
-        ease: "backOut"
+        ease: "backOut" as const
       }
     }),
     hover: {
@@ -75,26 +56,7 @@ export function Trust() {
       scale: 1.02,
       transition: {
         duration: 0.3,
-        ease: "easeInOut"
-      }
-    }
-  };
-
-  const starVariants = {
-    hidden: { scale: 0, rotate: -180 },
-    visible: (custom: number) => ({
-      scale: 1,
-      rotate: 0,
-      transition: {
-        duration: 0.4,
-        delay: 0.5 + custom * 0.1,
-        ease: "backOut"
-      }
-    }),
-    hover: {
-      rotate: 15,
-      transition: {
-        duration: 0.2
+        ease: "easeInOut" as const
       }
     }
   };

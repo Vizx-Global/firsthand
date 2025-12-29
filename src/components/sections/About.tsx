@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Target, Users as UsersIcon, ShieldCheck, Star, TrendingUp, Building2, HeartHandshake, Award, Quote, ArrowRight } from "lucide-react";
+import { Target, Users as UsersIcon, ShieldCheck, Star, TrendingUp, Building2, HeartHandshake, Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
@@ -36,29 +36,6 @@ export function About() {
     { number: "98%", label: "Client Satisfaction", icon: TrendingUp },
     { number: "24/7", label: "Dedicated Support", icon: HeartHandshake },
   ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut" as const
-      }
-    }
-  };
 
   const valueCardVariants = {
     hidden: { opacity: 0, x: -30 },
@@ -98,18 +75,6 @@ export function About() {
       transition: {
         duration: 0.3,
         ease: "easeInOut" as const
-      }
-    }
-  };
-
-  const badgeVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "backOut" as const
       }
     }
   };
