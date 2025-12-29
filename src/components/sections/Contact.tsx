@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { HiOutlineMailOpen } from "react-icons/hi";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { ImSpinner2 } from "react-icons/im";
-import { ArrowRight, Users, Calendar, Phone, MapPin, Mail } from "lucide-react";
+import { ArrowRight, Users, Calendar, Phone, Mail } from "lucide-react";
 import FirstHandContactUs from "@/assets/FirstHandContactUs.png";
 
 const ContactUs = () => {
@@ -17,11 +17,11 @@ const ContactUs = () => {
   const [loading, setLoading] = useState(false);
   const [successPopup, setSuccessPopup] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     

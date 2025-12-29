@@ -1,6 +1,5 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, CheckCircle, Users, Shield, Clock, GraduationCap, Building2, Target } from 'lucide-react'
+import { ArrowRight, CheckCircle, Users, GraduationCap, Building2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const CTASection = () => {
@@ -19,22 +18,15 @@ const CTASection = () => {
     ]
 
     const handleHealthcareCareers = () => {
-        // Navigate to healthcare careers or scroll to section
         window.location.href = '/healthcare-staffing-for-job-seekers';
-        // Or if using hash navigation:
-        // document.getElementById('healthcare-section')?.scrollIntoView({ behavior: 'smooth' });
     }
 
     const handleEducationCareers = () => {
-        // Navigate to education careers
         window.location.href = '/education-careers';
     }
 
     const handleGroupConsultation = () => {
-        // Navigate to contact page or scroll to contact section
         window.location.href = '#contact';
-        // Or if you have a contact section:
-        // document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
     }
 
     return (
@@ -225,6 +217,24 @@ const CTASection = () => {
                             </motion.div>
                         </motion.div>
                     </div>
+
+                    {/* Combined Services CTA */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
+                        viewport={{ once: true }}
+                        className="mt-16 text-center"
+                    >
+                        <Button
+                            size="lg"
+                            onClick={handleGroupConsultation}
+                            className="bg-gradient-to-r from-white/10 to-white/5 hover:from-white/20 hover:to-white/10 text-white font-bold px-10 py-8 rounded-2xl transition-all duration-300 hover:scale-105 border border-white/20 backdrop-blur-lg group"
+                        >
+                            <span className="text-lg">Schedule a Consultation for Both Services</span>
+                            <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform" />
+                        </Button>
+                    </motion.div>
                 </div>
             </div>
 

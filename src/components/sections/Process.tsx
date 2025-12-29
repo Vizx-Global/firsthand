@@ -56,20 +56,20 @@ export function Process() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
 
   const stepCardVariants = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: (custom) => ({
+    visible: (custom: number) => ({
       opacity: 1,
       scale: 1,
       transition: {
         duration: 0.5,
         delay: custom,
-        ease: "backOut"
+        ease: "backOut" as const
       }
     }),
     hover: {
@@ -77,27 +77,27 @@ export function Process() {
       scale: 1.05,
       transition: {
         duration: 0.3,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
   };
 
   const iconVariants = {
     hidden: { rotate: -180, scale: 0 },
-    visible: (custom) => ({
+    visible: (custom: number) => ({
       rotate: 0,
       scale: 1,
       transition: {
         duration: 0.6,
         delay: custom,
-        ease: "backOut"
+        ease: "backOut" as const
       }
     }),
     hover: {
       rotate: 15,
       transition: {
         duration: 0.3,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
   };
@@ -110,9 +110,21 @@ export function Process() {
       transition: {
         duration: 1,
         delay: 0.5,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
+  };
+
+  const dotVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: (delay: number) => ({
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        delay: delay
+      }
+    })
   };
 
   return (
@@ -166,30 +178,18 @@ export function Process() {
           />
 
           {/* Animated Connector Dots */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="hidden lg:flex absolute top-24 left-1/4 right-1/4 justify-between -translate-x-1/4 -z-10"
-          >
+          <div className="hidden lg:flex absolute top-24 left-1/4 right-1/4 justify-between -translate-x-1/4 -z-10">
             {[...Array(5)].map((_, index) => (
               <motion.div
                 key={index}
-                variants={{
-                  hidden: { scale: 0, opacity: 0 },
-                  visible: {
-                    scale: 1,
-                    opacity: 1,
-                    transition: {
-                      duration: 0.3,
-                      delay: 0.8 + index * 0.1
-                    }
-                  }
-                }}
+                variants={dotVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                custom={0.8 + index * 0.1}
                 className="w-3 h-3 bg-primary rounded-full"
               />
             ))}
-          </motion.div>
+          </div>
 
           {/* Process Cards */}
           <motion.div
@@ -213,9 +213,9 @@ export function Process() {
                   initial={{ opacity: 0, scale: 0 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
                   transition={{ duration: 0.4, delay: step.delay + 0.5 }}
-                  className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-primary border-2 border-gray-100 rounded-full flex items-center justify-center z-20 shadow-lg"
+                  className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-white border-2 border-gray-100 rounded-full flex items-center justify-center z-20 shadow-lg"
                 >
-                  <span className="text-lg font-bold text-gray-900">{index + 1}</span>
+                  <span className="text-lg font-bold text-primary">{index + 1}</span>
                 </motion.div>
 
                 {/* Process Card */}
@@ -241,14 +241,18 @@ export function Process() {
 
                   {/* Content */}
                   <motion.h3
-                    variants={itemVariants}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.5, delay: step.delay + 0.1 }}
                     className="text-xl lg:text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors duration-300"
                   >
                     {step.title}
                   </motion.h3>
 
                   <motion.p
-                    variants={itemVariants}
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ duration: 0.5, delay: step.delay + 0.2 }}
                     className="text-gray-600 leading-relaxed text-sm lg:text-base mb-6 flex-grow"
                   >
                     {step.description}

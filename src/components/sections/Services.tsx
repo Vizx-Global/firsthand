@@ -72,7 +72,7 @@ export function Services() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
@@ -85,14 +85,14 @@ export function Services() {
       transition: {
         duration: 0.6,
         delay: custom * 0.2,
-        ease: "backOut"
+        ease: "backOut" as const
       }
     }),
     hover: {
       y: -10,
       transition: {
         duration: 0.3,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
   };
@@ -104,14 +104,14 @@ export function Services() {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     },
     hover: {
       scale: 1.05,
       transition: {
         duration: 0.4,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
   };
@@ -165,11 +165,13 @@ export function Services() {
           viewport={{ once: true, amount: 0.3 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 mb-12 lg:mb-16"
         >
-          {benefits.map((benefit, index) => (
+          {benefits.map((benefit) => (
             <motion.div
               key={benefit.text}
-              variants={itemVariants}
-              custom={benefit.delay}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: benefit.delay }}
+              viewport={{ once: true }}
               className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-4 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               <div className="w-12 h-12 bg-gradient-to-br from-primary to-red-600 rounded-xl flex items-center justify-center mx-auto mb-3">
@@ -223,6 +225,7 @@ export function Services() {
                     initial="hidden"
                     whileInView="visible"
                     whileHover="hover"
+                    viewport={{ once: true }}
                     className="mb-8 rounded-2xl overflow-hidden shadow-lg border border-gray-200 aspect-[16/9] relative group/image"
                   >
                     <img 
@@ -279,18 +282,14 @@ export function Services() {
                   </motion.p>
 
                   {/* Features List */}
-                  <motion.ul
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="space-y-3 mb-8"
-                  >
+                  <div className="space-y-3 mb-8">
                     {service.features.map((feature, idx) => (
-                      <motion.li
+                      <motion.div
                         key={feature}
-                        variants={itemVariants}
-                        custom={idx * 0.05}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: idx * 0.05 }}
+                        viewport={{ once: true }}
                         className="flex items-center gap-3 text-gray-700 group/feature"
                       >
                         <motion.div
@@ -302,15 +301,16 @@ export function Services() {
                         <span className="text-sm lg:text-base group-hover/feature:translate-x-1 transition-transform duration-300">
                           {feature}
                         </span>
-                      </motion.li>
+                      </motion.div>
                     ))}
-                  </motion.ul>
+                  </div>
 
                   {/* CTA Button */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                    viewport={{ once: true }}
                   >
                     <Button
                       variant="outline"
