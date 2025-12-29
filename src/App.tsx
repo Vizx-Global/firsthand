@@ -6,8 +6,8 @@ import { Services } from "@/components/sections/Services";
 import { Process } from "@/components/sections/Process";
 import { Trust } from "@/components/sections/Trust";
 import { WhyUs } from "@/components/sections/WhyUs";
-import { Contact } from "@/components/sections/Contact";
-
+import Contact  from "@/components/sections/Contact";
+import CTASection from "./components/sections/CTASection";
 function App() {
   return (
     <div className="min-h-screen flex flex-col font-sans text-gray-900 bg-white">
@@ -20,6 +20,7 @@ function App() {
         <Trust />
         <WhyUs />
         <Contact />
+        <CTASection/>
       </main>
       <Footer />
     </div>
