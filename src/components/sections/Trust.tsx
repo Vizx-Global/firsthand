@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Quote, Award, Users, TrendingUp, Shield } from "lucide-react";
+import { Quote, Award } from "lucide-react";
 import { useRef } from "react";
 
 export function Trust() {
