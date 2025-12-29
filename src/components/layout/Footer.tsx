@@ -1,7 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, Clock, ArrowRight, Facebook, Twitter, Linkedin, Instagram, GraduationCap, Building2, MapPin, Shield, Users } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Phone, Clock, ArrowRight, Facebook, Twitter, Linkedin, Instagram, GraduationCap, Building2, MapPin, Users } from 'lucide-react';
 
 export function Footer() {
   const footerLinks = [
@@ -17,7 +15,7 @@ export function Footer() {
     { label: 'Education Staffing', category: 'education', icon: GraduationCap },
     { label: 'Healthcare Staffing', category: 'healthcare', icon: Building2 },
     { label: 'Executive Search', category: 'all', icon: Users },
-    { label: 'Contract Staffing', category: 'all', icon: Shield },
+    { label: 'Contract Staffing', category: 'all', icon: Users },
   ];
 
   const locations = [
@@ -110,7 +108,6 @@ export function Footer() {
                     </motion.div>
                   ))}
                 </div>
-
               </motion.div>
             </div>
 
